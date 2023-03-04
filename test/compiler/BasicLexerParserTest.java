@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-public class SimpleTest {
+public class BasicLexerParserTest {
 
     private final String fileName = "test/prova.fool";
     private FOOLLexer lexer;
@@ -26,13 +26,13 @@ public class SimpleTest {
 
 
     @Test
-    void testSimpleParsingShouldHaveZeroLexicalErrors() {
+    void testZeroLexicalErrors() {
         parser.prog();
         assertEquals(0, lexer.lexicalErrors);
     }
 
     @Test
-    void testSimpleParsingShouldHaveZeroSyntaxErrors() {
+    void testZeroSyntaxErrors() {
         parser.prog();
         assertEquals(0, parser.getNumberOfSyntaxErrors());
     }

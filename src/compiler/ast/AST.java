@@ -1,5 +1,6 @@
-package compiler;
+package compiler.ast;
 
+import compiler.SymbolTableEntry;
 import compiler.lib.BaseASTVisitor;
 import compiler.lib.node.DecNode;
 import compiler.lib.node.Node;
@@ -224,35 +225,6 @@ public class AST {
         }
     }
 
-    public static class ArrowTypeNode extends TypeNode {
-        final List<TypeNode> parlist;
-        final TypeNode ret;
-
-        ArrowTypeNode(List<TypeNode> p, TypeNode r) {
-            parlist = Collections.unmodifiableList(p);
-            ret = r;
-        }
-
-        @Override
-        public <S, E extends Exception> S accept(BaseASTVisitor<S, E> visitor) throws E {
-            return visitor.visitNode(this);
-        }
-    }
-
-    public static class BoolTypeNode extends TypeNode {
-
-        @Override
-        public <S, E extends Exception> S accept(BaseASTVisitor<S, E> visitor) throws E {
-            return visitor.visitNode(this);
-        }
-    }
-
-    public static class IntTypeNode extends TypeNode {
-
-        @Override
-        public <S, E extends Exception> S accept(BaseASTVisitor<S, E> visitor) throws E {
-            return visitor.visitNode(this);
-        }
-    }
 
 }
+

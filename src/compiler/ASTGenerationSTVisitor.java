@@ -1,7 +1,7 @@
 package compiler;
 
-import compiler.AST.*;
 import compiler.FOOLParser.*;
+import compiler.ast.AST.*;
 import compiler.lib.node.DecNode;
 import compiler.lib.node.Node;
 import compiler.lib.node.TypeNode;

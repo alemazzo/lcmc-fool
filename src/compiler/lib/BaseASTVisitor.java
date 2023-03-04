@@ -1,6 +1,9 @@
 package compiler.lib;
 
-import compiler.AST.*;
+import compiler.ast.AST.*;
+import compiler.ast.type.ArrowTypeNode;
+import compiler.ast.type.BoolTypeNode;
+import compiler.ast.type.IntTypeNode;
 import compiler.lib.exc.IncompleteException;
 import compiler.lib.exc.UnimplementedException;
 import compiler.lib.node.Node;

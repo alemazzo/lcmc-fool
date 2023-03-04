@@ -1,6 +1,6 @@
 package compiler;
 
-import compiler.AST.*;
+import compiler.ast.AST.*;
 import compiler.lib.BaseEASTVisitor;
 import compiler.lib.exc.VoidException;
 import compiler.lib.node.Node;
