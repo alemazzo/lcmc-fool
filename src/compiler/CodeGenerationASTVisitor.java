@@ -1,6 +1,12 @@
 package compiler;
 
-import compiler.ast.AST.*;
+import compiler.ast.language.*;
+import compiler.ast.operator.EqualNode;
+import compiler.ast.operator.PlusNode;
+import compiler.ast.operator.TimesNode;
+import compiler.ast.value.BoolNode;
+import compiler.ast.value.IntNode;
+import compiler.ast.value.VarNode;
 import compiler.lib.BaseASTVisitor;
 import compiler.lib.exc.VoidException;
 import compiler.lib.node.Node;

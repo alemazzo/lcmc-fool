@@ -6,10 +6,10 @@ import compiler.lib.node.Node;
 import compiler.lib.node.TypeNode;
 
 public class VarNode extends DecNode {
-    final String id;
-    final Node exp;
+    public final String id;
+    public final Node exp;
 
-    VarNode(String i, TypeNode t, Node v) {
+    public VarNode(String i, TypeNode t, Node v) {
         id = i;
         type = t;
         exp = v;

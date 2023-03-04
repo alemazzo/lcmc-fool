@@ -7,10 +7,10 @@ import java.util.Collections;
 import java.util.List;
 
 public class ArrowTypeNode extends TypeNode {
-    final List<TypeNode> parlist;
-    final TypeNode ret;
+    public final List<TypeNode> parlist;
+    public final TypeNode ret;
 
-    ArrowTypeNode(List<TypeNode> p, TypeNode r) {
+    public ArrowTypeNode(List<TypeNode> p, TypeNode r) {
         parlist = Collections.unmodifiableList(p);
         ret = r;
     }

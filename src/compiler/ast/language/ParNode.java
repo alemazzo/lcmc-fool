@@ -5,9 +5,9 @@ import compiler.lib.node.DecNode;
 import compiler.lib.node.TypeNode;
 
 public class ParNode extends DecNode {
-    final String id;
+    public final String id;
 
-    ParNode(String i, TypeNode t) {
+    public ParNode(String i, TypeNode t) {
         id = i;
         type = t;
     }

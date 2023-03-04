@@ -1,11 +1,21 @@
 package compiler;
 
-import compiler.ast.AST.*;
+import compiler.ast.language.*;
+import compiler.ast.operator.EqualNode;
+import compiler.ast.operator.PlusNode;
+import compiler.ast.operator.TimesNode;
+import compiler.ast.type.ArrowTypeNode;
+import compiler.ast.type.BoolTypeNode;
+import compiler.ast.type.IntTypeNode;
+import compiler.ast.value.BoolNode;
+import compiler.ast.value.IntNode;
+import compiler.ast.value.VarNode;
 import compiler.lib.BaseEASTVisitor;
 import compiler.lib.exc.IncompleteException;
 import compiler.lib.exc.TypeException;
 import compiler.lib.node.Node;
 import compiler.lib.node.TypeNode;
+import compiler.lib.stentry.STEntry;
 
 import static compiler.lib.type.TypeRelations.isSubtype;
 
@@ -179,7 +189,7 @@ public class TypeCheckEASTVisitor extends BaseEASTVisitor<TypeNode, TypeExceptio
 // STentry (ritorna campo type)
 
     @Override
-    public TypeNode visitSTentry(SymbolTableEntry entry) throws TypeException {
+    public TypeNode visitSTentry(STEntry entry) throws TypeException {
         if (print) printSTentry("type");
         return ckvisit(entry.type);
     }

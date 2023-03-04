@@ -1,9 +1,19 @@
 package compiler;
 
-import compiler.ast.AST.*;
+import compiler.ast.language.*;
+import compiler.ast.operator.EqualNode;
+import compiler.ast.operator.PlusNode;
+import compiler.ast.operator.TimesNode;
+import compiler.ast.type.ArrowTypeNode;
+import compiler.ast.type.BoolTypeNode;
+import compiler.ast.type.IntTypeNode;
+import compiler.ast.value.BoolNode;
+import compiler.ast.value.IntNode;
+import compiler.ast.value.VarNode;
 import compiler.lib.BaseEASTVisitor;
 import compiler.lib.exc.VoidException;
 import compiler.lib.node.Node;
+import compiler.lib.stentry.STEntry;
 
 public class PrintEASTVisitor extends BaseEASTVisitor<Void, VoidException> {
 
@@ -139,7 +149,7 @@ public class PrintEASTVisitor extends BaseEASTVisitor<Void, VoidException> {
     }
 
     @Override
-    public Void visitSTentry(SymbolTableEntry entry) {
+    public Void visitSTentry(STEntry entry) {
         printSTentry("nestlev " + entry.nl);
         printSTentry("type");
         visit(entry.type);

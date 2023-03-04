@@ -1,7 +1,7 @@
 package compiler.lib.type;
 
-import compiler.ast.AST.BoolTypeNode;
-import compiler.ast.AST.IntTypeNode;
+import compiler.ast.type.BoolTypeNode;
+import compiler.ast.type.IntTypeNode;
 import compiler.lib.node.TypeNode;
 
 /**

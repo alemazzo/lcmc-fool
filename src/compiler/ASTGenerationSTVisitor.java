@@ -1,7 +1,15 @@
 package compiler;
 
 import compiler.FOOLParser.*;
-import compiler.ast.AST.*;
+import compiler.ast.language.*;
+import compiler.ast.operator.EqualNode;
+import compiler.ast.operator.PlusNode;
+import compiler.ast.operator.TimesNode;
+import compiler.ast.type.BoolTypeNode;
+import compiler.ast.type.IntTypeNode;
+import compiler.ast.value.BoolNode;
+import compiler.ast.value.IntNode;
+import compiler.ast.value.VarNode;
 import compiler.lib.node.DecNode;
 import compiler.lib.node.Node;
 import compiler.lib.node.TypeNode;

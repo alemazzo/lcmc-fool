@@ -1,7 +1,7 @@
 package compiler.lib;
 
-import compiler.SymbolTableEntry;
 import compiler.lib.exc.UnimplementedException;
+import compiler.lib.stentry.STEntry;
 
 public class BaseEASTVisitor<S, E extends Exception> extends BaseASTVisitor<S, E> {
 
@@ -20,7 +20,7 @@ public class BaseEASTVisitor<S, E extends Exception> extends BaseASTVisitor<S, E
         System.out.println(indent + "STentry: " + s);
     }
 
-    public S visitSTentry(SymbolTableEntry s) throws E {
+    public S visitSTentry(STEntry s) throws E {
         throw new UnimplementedException();
     }
 }

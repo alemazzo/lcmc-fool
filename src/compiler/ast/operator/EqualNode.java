@@ -4,10 +4,10 @@ import compiler.lib.BaseASTVisitor;
 import compiler.lib.node.Node;
 
 public class EqualNode extends Node {
-    final Node left;
-    final Node right;
+    public final Node left;
+    public final Node right;
 
-    EqualNode(Node l, Node r) {
+    public EqualNode(Node l, Node r) {
         left = l;
         right = r;
     }

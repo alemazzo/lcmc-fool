@@ -8,10 +8,10 @@ import java.util.Collections;
 import java.util.List;
 
 public class ProgLetInNode extends Node {
-    final List<DecNode> declist;
-    final Node exp;
+    public final List<DecNode> declist;
+    public final Node exp;
 
-    ProgLetInNode(List<DecNode> d, Node e) {
+    public ProgLetInNode(List<DecNode> d, Node e) {
         declist = Collections.unmodifiableList(d);
         exp = e;
     }

@@ -1,19 +1,19 @@
 package compiler.ast.language;
 
-import compiler.SymbolTableEntry;
 import compiler.lib.BaseASTVisitor;
 import compiler.lib.node.Node;
+import compiler.lib.stentry.STEntry;
 
 import java.util.Collections;
 import java.util.List;
 
 public class CallNode extends Node {
-    final String id;
-    final List<Node> arglist;
-    SymbolTableEntry entry;
-    int nl;
+    public final String id;
+    public final List<Node> arglist;
+    public STEntry entry;
+    public int nl;
 
-    CallNode(String i, List<Node> p) {
+    public CallNode(String i, List<Node> p) {
         id = i;
         arglist = Collections.unmodifiableList(p);
     }

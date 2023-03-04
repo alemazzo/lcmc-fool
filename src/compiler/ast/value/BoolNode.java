@@ -3,10 +3,10 @@ package compiler.ast.value;
 import compiler.lib.BaseASTVisitor;
 import compiler.lib.node.Node;
 
-public static class BoolNode extends Node {
-    final Boolean val;
+public class BoolNode extends Node {
+    public final Boolean val;
 
-    BoolNode(boolean n) {
+    public BoolNode(boolean n) {
         val = n;
     }
 

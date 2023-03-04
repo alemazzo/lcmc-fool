@@ -4,9 +4,9 @@ import compiler.lib.BaseASTVisitor;
 import compiler.lib.node.Node;
 
 public class PrintNode extends Node {
-    final Node exp;
+    public final Node exp;
 
-    PrintNode(Node e) {
+    public PrintNode(Node e) {
         exp = e;
     }
 

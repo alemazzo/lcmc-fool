@@ -4,10 +4,10 @@ import compiler.lib.BaseASTVisitor;
 import compiler.lib.node.Node;
 
 public class PlusNode extends Node {
-    final Node left;
-    final Node right;
+    public final Node left;
+    public final Node right;
 
-    PlusNode(Node l, Node r) {
+    public PlusNode(Node l, Node r) {
         left = l;
         right = r;
     }

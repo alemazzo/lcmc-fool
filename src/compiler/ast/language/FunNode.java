@@ -9,13 +9,13 @@ import java.util.Collections;
 import java.util.List;
 
 public class FunNode extends DecNode {
-    final String id;
-    final TypeNode retType;
-    final List<ParNode> parlist;
-    final List<DecNode> declist;
-    final Node exp;
+    public final String id;
+    public final List<ParNode> parlist;
+    public final List<DecNode> declist;
+    public final Node exp;
+    public final TypeNode retType;
 
-    FunNode(String i, TypeNode rt, List<ParNode> pl, List<DecNode> dl, Node e) {
+    public FunNode(String i, TypeNode rt, List<ParNode> pl, List<DecNode> dl, Node e) {
         id = i;
         retType = rt;
         parlist = Collections.unmodifiableList(pl);

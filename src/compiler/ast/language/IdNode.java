@@ -1,15 +1,15 @@
 package compiler.ast.language;
 
-import compiler.SymbolTableEntry;
 import compiler.lib.BaseASTVisitor;
 import compiler.lib.node.Node;
+import compiler.lib.stentry.STEntry;
 
 public class IdNode extends Node {
-    final String id;
-    SymbolTableEntry entry;
-    int nl;
+    public final String id;
+    public STEntry entry;
+    public int nl;
 
-    IdNode(String i) {
+    public IdNode(String i) {
         id = i;
     }
 

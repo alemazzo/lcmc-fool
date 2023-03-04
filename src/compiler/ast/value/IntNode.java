@@ -4,9 +4,9 @@ import compiler.lib.BaseASTVisitor;
 import compiler.lib.node.Node;
 
 public class IntNode extends Node {
-    final Integer val;
+    public final Integer val;
 
-    IntNode(Integer n) {
+    public IntNode(Integer n) {
         val = n;
     }
 
