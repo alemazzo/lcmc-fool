@@ -1,6 +1,7 @@
 package compiler;
 
 import compiler.lib.*;
+import compiler.lib.visit.Visitable;
 
 public class STentry implements Visitable {
 	final int nl;

@@ -1,7 +1,7 @@
 package compiler.lib;
 
 import compiler.*;
-import compiler.exc.UnimplException;
+import compiler.exc.UnimplementedException;
 
 public class BaseEASTVisitor<S,E extends Exception> extends BaseASTVisitor<S,E>  {
 	
@@ -13,5 +13,5 @@ public class BaseEASTVisitor<S,E extends Exception> extends BaseASTVisitor<S,E> 
     	System.out.println(indent+"STentry: "+s);
 	}
 	
-	public S visitSTentry(STentry s) throws E {throw new UnimplException();}
+	public S visitSTentry(STentry s) throws E {throw new UnimplementedException();}
 }

@@ -28,7 +28,7 @@ public class TypeCheckEASTVisitor extends BaseEASTVisitor<TypeNode,TypeException
 		for (Node dec : n.declist)
 			try {
 				visit(dec);
-			} catch (IncomplException e) { 
+			} catch (IncompleteException e) {
 			} catch (TypeException e) {
 				System.out.println("Type checking error in a declaration: " + e.text);
 			}
@@ -47,7 +47,7 @@ public class TypeCheckEASTVisitor extends BaseEASTVisitor<TypeNode,TypeException
 		for (Node dec : n.declist)
 			try {
 				visit(dec);
-			} catch (IncomplException e) { 
+			} catch (IncompleteException e) {
 			} catch (TypeException e) {
 				System.out.println("Type checking error in a declaration: " + e.text);
 			}
