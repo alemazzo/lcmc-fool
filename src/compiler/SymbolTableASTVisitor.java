@@ -4,6 +4,7 @@ import java.util.*;
 import compiler.AST.*;
 import compiler.exc.*;
 import compiler.lib.*;
+import compiler.lib.node.Node;
 
 public class SymbolTableASTVisitor extends BaseASTVisitor<Void,VoidException> {
 	

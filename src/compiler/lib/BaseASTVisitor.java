@@ -2,11 +2,13 @@ package compiler.lib;
 
 import compiler.AST.*;
 import compiler.exc.*;
+import compiler.lib.node.Node;
 import compiler.lib.visit.Visitable;
+import compiler.lib.visit.Visitor;
 
 import static compiler.lib.FOOLlib.*;
 
-public class BaseASTVisitor<S,E extends Exception> {
+public class BaseASTVisitor<S,E extends Exception> implements Visitor<S,E> {
 
 	private boolean incomplExc; // enables throwing IncomplException
 	protected boolean print;    // enables printing
@@ -24,10 +26,12 @@ public class BaseASTVisitor<S,E extends Exception> {
 		System.out.println(indent+extractNodeName(n.getClass().getName())+": "+s);
 	}
 
+	@Override
 	public S visit(Visitable v) throws E {
 		return visit(v, "");                //performs unmarked visit
 	}
 
+	@Override
 	public S visit(Visitable v, String mark) throws E {   //when printing marks this visit with string mark
 		if (v==null)
 			if (incomplExc) throw new IncompleteException();

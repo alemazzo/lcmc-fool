@@ -3,6 +3,7 @@ package compiler;
 import compiler.AST.*;
 import compiler.lib.*;
 import compiler.exc.*;
+import compiler.lib.node.Node;
 
 public class PrintEASTVisitor extends BaseEASTVisitor<Void,VoidException> {
 

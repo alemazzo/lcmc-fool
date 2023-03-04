@@ -1,6 +1,8 @@
 package compiler;
 
 import java.io.*;
+
+import compiler.lib.node.Node;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 import compiler.lib.*;
