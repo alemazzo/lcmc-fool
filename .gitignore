@@ -1,6 +1,7 @@
 # project .asm
 *.asm
 gen/
+build/
 
 ### IntelliJ IDEA ###
 out/
