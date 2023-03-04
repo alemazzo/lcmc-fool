@@ -9,12 +9,12 @@ public class IdNode extends Node {
     public STEntry entry;
     public int nl;
 
-    public IdNode(String i) {
+    public IdNode(final String i) {
         id = i;
     }
 
     @Override
-    public <S, E extends Exception> S accept(BaseASTVisitor<S, E> visitor) throws E {
+    public <S, E extends Exception> S accept(final BaseASTVisitor<S, E> visitor) throws E {
         return visitor.visitNode(this);
     }
 }

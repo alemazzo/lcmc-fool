@@ -8,22 +8,22 @@ public interface Visitor<S, E extends Exception> {
     /**
      * Visit a visitable node.
      *
-     * @param v - the visitable to visit
+     * @param visitable - the visitable to visit
      * @return the result of the visit
      * @throws E - if the visitor throws an exception
      */
-    default S visit(Visitable v) throws E {
-        return visit(v, "");
+    default S visit(final Visitable visitable) throws E {
+        return visit(visitable, "");
     }
 
     /**
      * Visit a visitable node with a mark.
      *
-     * @param v    - the visitable to visit
-     * @param mark - a string to mark the visit
+     * @param visitable - the visitable to visit
+     * @param mark      - a string to mark the visit
      * @return the result of the visit
      * @throws E - if the visitor throws an exception
      */
-    S visit(Visitable v, String mark) throws E;
+    S visit(final Visitable visitable, final String mark) throws E;
 
 }

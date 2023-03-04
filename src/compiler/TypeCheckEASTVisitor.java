@@ -43,7 +43,7 @@ public class TypeCheckEASTVisitor extends BaseEASTVisitor<TypeNode, TypeExceptio
 
     @Override
     public TypeNode visitNode(ProgLetInNode n) throws TypeException {
-        if (print) printNode(n);
+        if (printEnabled) printNode(n);
         for (Node dec : n.declist)
             try {
                 visit(dec);
@@ -56,13 +56,13 @@ public class TypeCheckEASTVisitor extends BaseEASTVisitor<TypeNode, TypeExceptio
 
     @Override
     public TypeNode visitNode(ProgNode n) throws TypeException {
-        if (print) printNode(n);
+        if (printEnabled) printNode(n);
         return visit(n.exp);
     }
 
     @Override
     public TypeNode visitNode(FunNode n) throws TypeException {
-        if (print) printNode(n, n.id);
+        if (printEnabled) printNode(n, n.id);
         for (Node dec : n.declist)
             try {
                 visit(dec);
@@ -77,7 +77,7 @@ public class TypeCheckEASTVisitor extends BaseEASTVisitor<TypeNode, TypeExceptio
 
     @Override
     public TypeNode visitNode(VarNode n) throws TypeException {
-        if (print) printNode(n, n.id);
+        if (printEnabled) printNode(n, n.id);
         if (!isSubtype(visit(n.exp), ckvisit(n.getType())))
             throw new TypeException("Incompatible value for variable " + n.id, n.getLine());
         return null;
@@ -85,13 +85,13 @@ public class TypeCheckEASTVisitor extends BaseEASTVisitor<TypeNode, TypeExceptio
 
     @Override
     public TypeNode visitNode(PrintNode n) throws TypeException {
-        if (print) printNode(n);
+        if (printEnabled) printNode(n);
         return visit(n.exp);
     }
 
     @Override
     public TypeNode visitNode(IfNode n) throws TypeException {
-        if (print) printNode(n);
+        if (printEnabled) printNode(n);
         if (!(isSubtype(visit(n.cond), new BoolTypeNode())))
             throw new TypeException("Non boolean condition in if", n.getLine());
         TypeNode t = visit(n.th);
@@ -103,7 +103,7 @@ public class TypeCheckEASTVisitor extends BaseEASTVisitor<TypeNode, TypeExceptio
 
     @Override
     public TypeNode visitNode(EqualNode n) throws TypeException {
-        if (print) printNode(n);
+        if (printEnabled) printNode(n);
         TypeNode l = visit(n.left);
         TypeNode r = visit(n.right);
         if (!(isSubtype(l, r) || isSubtype(r, l)))
@@ -113,7 +113,7 @@ public class TypeCheckEASTVisitor extends BaseEASTVisitor<TypeNode, TypeExceptio
 
     @Override
     public TypeNode visitNode(TimesNode n) throws TypeException {
-        if (print) printNode(n);
+        if (printEnabled) printNode(n);
         if (!(isSubtype(visit(n.left), new IntTypeNode())
                 && isSubtype(visit(n.right), new IntTypeNode())))
             throw new TypeException("Non integers in multiplication", n.getLine());
@@ -122,7 +122,7 @@ public class TypeCheckEASTVisitor extends BaseEASTVisitor<TypeNode, TypeExceptio
 
     @Override
     public TypeNode visitNode(PlusNode n) throws TypeException {
-        if (print) printNode(n);
+        if (printEnabled) printNode(n);
         if (!(isSubtype(visit(n.left), new IntTypeNode())
                 && isSubtype(visit(n.right), new IntTypeNode())))
             throw new TypeException("Non integers in sum", n.getLine());
@@ -131,7 +131,7 @@ public class TypeCheckEASTVisitor extends BaseEASTVisitor<TypeNode, TypeExceptio
 
     @Override
     public TypeNode visitNode(CallNode n) throws TypeException {
-        if (print) printNode(n, n.id);
+        if (printEnabled) printNode(n, n.id);
         TypeNode t = visit(n.entry);
         if (!(t instanceof ArrowTypeNode at))
             throw new TypeException("Invocation of a non-function " + n.id, n.getLine());
@@ -145,7 +145,7 @@ public class TypeCheckEASTVisitor extends BaseEASTVisitor<TypeNode, TypeExceptio
 
     @Override
     public TypeNode visitNode(IdNode n) throws TypeException {
-        if (print) printNode(n, n.id);
+        if (printEnabled) printNode(n, n.id);
         TypeNode t = visit(n.entry);
         if (t instanceof ArrowTypeNode)
             throw new TypeException("Wrong usage of function identifier " + n.id, n.getLine());
@@ -154,13 +154,13 @@ public class TypeCheckEASTVisitor extends BaseEASTVisitor<TypeNode, TypeExceptio
 
     @Override
     public TypeNode visitNode(BoolNode n) {
-        if (print) printNode(n, n.val.toString());
+        if (printEnabled) printNode(n, n.val.toString());
         return new BoolTypeNode();
     }
 
     @Override
     public TypeNode visitNode(IntNode n) {
-        if (print) printNode(n, n.val.toString());
+        if (printEnabled) printNode(n, n.val.toString());
         return new IntTypeNode();
     }
 
@@ -168,7 +168,7 @@ public class TypeCheckEASTVisitor extends BaseEASTVisitor<TypeNode, TypeExceptio
 
     @Override
     public TypeNode visitNode(ArrowTypeNode n) throws TypeException {
-        if (print) printNode(n);
+        if (printEnabled) printNode(n);
         for (Node par : n.parlist) visit(par);
         visit(n.ret, "->"); //marks return type
         return null;
@@ -176,13 +176,13 @@ public class TypeCheckEASTVisitor extends BaseEASTVisitor<TypeNode, TypeExceptio
 
     @Override
     public TypeNode visitNode(BoolTypeNode n) {
-        if (print) printNode(n);
+        if (printEnabled) printNode(n);
         return null;
     }
 
     @Override
     public TypeNode visitNode(IntTypeNode n) {
-        if (print) printNode(n);
+        if (printEnabled) printNode(n);
         return null;
     }
 
@@ -190,7 +190,7 @@ public class TypeCheckEASTVisitor extends BaseEASTVisitor<TypeNode, TypeExceptio
 
     @Override
     public TypeNode visitSTEntry(STEntry entry) throws TypeException {
-        if (print) printSTEntry("type");
+        if (printEnabled) printSTEntry("type");
         return ckvisit(entry.type);
     }
 

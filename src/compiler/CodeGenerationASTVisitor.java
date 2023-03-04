@@ -24,7 +24,7 @@ public class CodeGenerationASTVisitor extends BaseASTVisitor<String, VoidExcepti
 
     @Override
     public String visitNode(ProgLetInNode n) {
-        if (print) printNode(n);
+        if (printEnabled) printNode(n);
         String declCode = null;
         for (Node dec : n.declist) declCode = nlJoin(declCode, visit(dec));
         return nlJoin(
@@ -38,7 +38,7 @@ public class CodeGenerationASTVisitor extends BaseASTVisitor<String, VoidExcepti
 
     @Override
     public String visitNode(ProgNode n) {
-        if (print) printNode(n);
+        if (printEnabled) printNode(n);
         return nlJoin(
                 visit(n.exp),
                 "halt"
@@ -47,7 +47,7 @@ public class CodeGenerationASTVisitor extends BaseASTVisitor<String, VoidExcepti
 
     @Override
     public String visitNode(FunNode n) {
-        if (print) printNode(n, n.id);
+        if (printEnabled) printNode(n, n.id);
         String declCode = null, popDecl = null, popParl = null;
         for (Node dec : n.declist) {
             declCode = nlJoin(declCode, visit(dec));
@@ -78,13 +78,13 @@ public class CodeGenerationASTVisitor extends BaseASTVisitor<String, VoidExcepti
 
     @Override
     public String visitNode(VarNode n) {
-        if (print) printNode(n, n.id);
+        if (printEnabled) printNode(n, n.id);
         return visit(n.exp);
     }
 
     @Override
     public String visitNode(PrintNode n) {
-        if (print) printNode(n);
+        if (printEnabled) printNode(n);
         return nlJoin(
                 visit(n.exp),
                 "print"
@@ -93,7 +93,7 @@ public class CodeGenerationASTVisitor extends BaseASTVisitor<String, VoidExcepti
 
     @Override
     public String visitNode(IfNode n) {
-        if (print) printNode(n);
+        if (printEnabled) printNode(n);
         String l1 = freshLabel();
         String l2 = freshLabel();
         return nlJoin(
@@ -110,7 +110,7 @@ public class CodeGenerationASTVisitor extends BaseASTVisitor<String, VoidExcepti
 
     @Override
     public String visitNode(EqualNode n) {
-        if (print) printNode(n);
+        if (printEnabled) printNode(n);
         String l1 = freshLabel();
         String l2 = freshLabel();
         return nlJoin(
@@ -127,7 +127,7 @@ public class CodeGenerationASTVisitor extends BaseASTVisitor<String, VoidExcepti
 
     @Override
     public String visitNode(TimesNode n) {
-        if (print) printNode(n);
+        if (printEnabled) printNode(n);
         return nlJoin(
                 visit(n.left),
                 visit(n.right),
@@ -137,7 +137,7 @@ public class CodeGenerationASTVisitor extends BaseASTVisitor<String, VoidExcepti
 
     @Override
     public String visitNode(PlusNode n) {
-        if (print) printNode(n);
+        if (printEnabled) printNode(n);
         return nlJoin(
                 visit(n.left),
                 visit(n.right),
@@ -147,7 +147,7 @@ public class CodeGenerationASTVisitor extends BaseASTVisitor<String, VoidExcepti
 
     @Override
     public String visitNode(CallNode n) {
-        if (print) printNode(n, n.id);
+        if (printEnabled) printNode(n, n.id);
         String argCode = null, getAR = null;
         for (int i = n.arglist.size() - 1; i >= 0; i--) argCode = nlJoin(argCode, visit(n.arglist.get(i)));
         for (int i = 0; i < n.nl - n.entry.nl; i++) getAR = nlJoin(getAR, "lw");
@@ -167,7 +167,7 @@ public class CodeGenerationASTVisitor extends BaseASTVisitor<String, VoidExcepti
 
     @Override
     public String visitNode(IdNode n) {
-        if (print) printNode(n, n.id);
+        if (printEnabled) printNode(n, n.id);
         String getAR = null;
         for (int i = 0; i < n.nl - n.entry.nl; i++) getAR = nlJoin(getAR, "lw");
         return nlJoin(
@@ -180,13 +180,13 @@ public class CodeGenerationASTVisitor extends BaseASTVisitor<String, VoidExcepti
 
     @Override
     public String visitNode(BoolNode n) {
-        if (print) printNode(n, n.val.toString());
+        if (printEnabled) printNode(n, n.val.toString());
         return "push " + (n.val ? 1 : 0);
     }
 
     @Override
     public String visitNode(IntNode n) {
-        if (print) printNode(n, n.val.toString());
+        if (printEnabled) printNode(n, n.val.toString());
         return "push " + n.val;
     }
 }

@@ -43,7 +43,7 @@ public class SymbolTableASTVisitor extends BaseASTVisitor<Void, VoidException> {
 
     @Override
     public Void visitNode(ProgLetInNode n) {
-        if (print) printNode(n);
+        if (printEnabled) printNode(n);
         Map<String, STEntry> hm = new HashMap<>();
         symTable.add(hm);
         for (Node dec : n.declist) visit(dec);
@@ -54,14 +54,14 @@ public class SymbolTableASTVisitor extends BaseASTVisitor<Void, VoidException> {
 
     @Override
     public Void visitNode(ProgNode n) {
-        if (print) printNode(n);
+        if (printEnabled) printNode(n);
         visit(n.exp);
         return null;
     }
 
     @Override
     public Void visitNode(FunNode n) {
-        if (print) printNode(n);
+        if (printEnabled) printNode(n);
         Map<String, STEntry> hm = symTable.get(nestingLevel);
         List<TypeNode> parTypes = new ArrayList<>();
         for (ParNode par : n.parlist) parTypes.add(par.getType());
@@ -94,7 +94,7 @@ public class SymbolTableASTVisitor extends BaseASTVisitor<Void, VoidException> {
 
     @Override
     public Void visitNode(VarNode n) {
-        if (print) printNode(n);
+        if (printEnabled) printNode(n);
         visit(n.exp);
         Map<String, STEntry> hm = symTable.get(nestingLevel);
         STEntry entry = new STEntry(nestingLevel, n.getType(), decOffset--);
@@ -108,14 +108,14 @@ public class SymbolTableASTVisitor extends BaseASTVisitor<Void, VoidException> {
 
     @Override
     public Void visitNode(PrintNode n) {
-        if (print) printNode(n);
+        if (printEnabled) printNode(n);
         visit(n.exp);
         return null;
     }
 
     @Override
     public Void visitNode(IfNode n) {
-        if (print) printNode(n);
+        if (printEnabled) printNode(n);
         visit(n.cond);
         visit(n.th);
         visit(n.el);
@@ -124,7 +124,7 @@ public class SymbolTableASTVisitor extends BaseASTVisitor<Void, VoidException> {
 
     @Override
     public Void visitNode(EqualNode n) {
-        if (print) printNode(n);
+        if (printEnabled) printNode(n);
         visit(n.left);
         visit(n.right);
         return null;
@@ -132,7 +132,7 @@ public class SymbolTableASTVisitor extends BaseASTVisitor<Void, VoidException> {
 
     @Override
     public Void visitNode(TimesNode n) {
-        if (print) printNode(n);
+        if (printEnabled) printNode(n);
         visit(n.left);
         visit(n.right);
         return null;
@@ -140,7 +140,7 @@ public class SymbolTableASTVisitor extends BaseASTVisitor<Void, VoidException> {
 
     @Override
     public Void visitNode(PlusNode n) {
-        if (print) printNode(n);
+        if (printEnabled) printNode(n);
         visit(n.left);
         visit(n.right);
         return null;
@@ -148,7 +148,7 @@ public class SymbolTableASTVisitor extends BaseASTVisitor<Void, VoidException> {
 
     @Override
     public Void visitNode(CallNode n) {
-        if (print) printNode(n);
+        if (printEnabled) printNode(n);
         STEntry entry = stLookup(n.id);
         if (entry == null) {
             System.out.println("Fun id " + n.id + " at line " + n.getLine() + " not declared");
@@ -163,7 +163,7 @@ public class SymbolTableASTVisitor extends BaseASTVisitor<Void, VoidException> {
 
     @Override
     public Void visitNode(IdNode n) {
-        if (print) printNode(n);
+        if (printEnabled) printNode(n);
         STEntry entry = stLookup(n.id);
         if (entry == null) {
             System.out.println("Var or Par id " + n.id + " at line " + n.getLine() + " not declared");
@@ -177,13 +177,13 @@ public class SymbolTableASTVisitor extends BaseASTVisitor<Void, VoidException> {
 
     @Override
     public Void visitNode(BoolNode n) {
-        if (print) printNode(n, n.val.toString());
+        if (printEnabled) printNode(n, n.val.toString());
         return null;
     }
 
     @Override
     public Void visitNode(IntNode n) {
-        if (print) printNode(n, n.val.toString());
+        if (printEnabled) printNode(n, n.val.toString());
         return null;
     }
 }

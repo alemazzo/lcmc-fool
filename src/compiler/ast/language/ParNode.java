@@ -5,15 +5,16 @@ import compiler.lib.node.DecNode;
 import compiler.lib.node.TypeNode;
 
 public class ParNode extends DecNode {
+
     public final String id;
 
-    public ParNode(String i, TypeNode t) {
+    public ParNode(final String i, final TypeNode t) {
         id = i;
         type = t;
     }
 
     @Override
-    public <S, E extends Exception> S accept(BaseASTVisitor<S, E> visitor) throws E {
+    public <S, E extends Exception> S accept(final BaseASTVisitor<S, E> visitor) throws E {
         return visitor.visitNode(this);
     }
 }

@@ -10,14 +10,14 @@ public class STEntry implements Visitable {
     public final int nl;
     public final int offset;
 
-    public STEntry(int n, TypeNode t, int o) {
+    public STEntry(final int n, final TypeNode t, final int o) {
         nl = n;
         type = t;
         offset = o;
     }
 
     @Override
-    public <S, E extends Exception> S accept(BaseASTVisitor<S, E> visitor) throws E {
+    public <S, E extends Exception> S accept(final BaseASTVisitor<S, E> visitor) throws E {
         return ((BaseEASTVisitor<S, E>) visitor).visitSTEntry(this);
     }
 }

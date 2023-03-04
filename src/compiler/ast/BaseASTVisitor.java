@@ -20,123 +20,135 @@ import static compiler.lib.FOOL.extractNodeName;
 
 public class BaseASTVisitor<S, E extends Exception> implements Visitor<S, E> {
 
-    protected boolean print;    // enables printing
+    /**
+     * enables printing
+     */
+    protected final boolean printEnabled;
+
+    /**
+     * enables throwing IncompleteException
+     */
+    private final boolean incompleteExceptionEnabled;
+
     protected String indent;
-    private boolean incomplExc; // enables throwing IncomplException
 
     protected BaseASTVisitor() {
+        this(false, false);
     }
 
-    protected BaseASTVisitor(boolean ie) {
-        incomplExc = ie;
+    protected BaseASTVisitor(final boolean incompleteExceptionEnabled) {
+        this(incompleteExceptionEnabled, false);
     }
 
-    protected BaseASTVisitor(boolean ie, boolean p) {
-        incomplExc = ie;
-        print = p;
+    protected BaseASTVisitor(final boolean incompleteExceptionEnabled, final boolean printEnabled) {
+        this.incompleteExceptionEnabled = incompleteExceptionEnabled;
+        this.printEnabled = printEnabled;
     }
 
-    protected void printNode(Node n) {
-        System.out.println(indent + extractNodeName(n.getClass().getName()));
+    protected void printNode(final Node node) {
+        System.out.println(indent + extractNodeName(node.getClass().getName()));
     }
 
-    protected void printNode(Node n, String s) {
-        System.out.println(indent + extractNodeName(n.getClass().getName()) + ": " + s);
-    }
-
-    @Override
-    public S visit(Visitable v) throws E {
-        return visit(v, "");                //performs unmarked visit
+    protected void printNode(final Node node, final String mark) {
+        System.out.println(indent + extractNodeName(node.getClass().getName()) + ": " + mark);
     }
 
     @Override
-    public S visit(Visitable v, String mark) throws E {   //when printing marks this visit with string mark
-        if (v == null)
-            if (incomplExc) throw new IncompleteException();
-            else
-                return null;
-        if (print) {
+    public S visit(final Visitable visitable) throws E {
+        // performs unmarked visit
+        return visit(visitable, "");
+    }
+
+    @Override
+    public S visit(final Visitable visitable, final String mark) throws E {
+        // when printing marks this visit with string mark
+        if (visitable == null) {
+            if (incompleteExceptionEnabled) throw new IncompleteException();
+            else return null;
+        }
+        if (printEnabled) {
             String temp = indent;
             indent = (indent == null) ? "" : indent + "  ";
-            indent += mark; //inserts mark
+            indent += mark; // inserts mark
             try {
-                return visitByAcc(v);
+                return visitByAcc(visitable);
             } finally {
                 indent = temp;
             }
-        } else
-            return visitByAcc(v);
+        } else {
+            return visitByAcc(visitable);
+        }
     }
 
-    S visitByAcc(Visitable v) throws E {
-        return v.accept(this);
+    private S visitByAcc(final Visitable visitable) throws E {
+        return visitable.accept(this);
     }
 
-    public S visitNode(ProgLetInNode n) throws E {
+    public S visitNode(final ProgLetInNode progLetInNode) throws E {
         throw new UnimplementedException();
     }
 
-    public S visitNode(ProgNode n) throws E {
+    public S visitNode(final ProgNode progNode) throws E {
         throw new UnimplementedException();
     }
 
-    public S visitNode(FunNode n) throws E {
+    public S visitNode(final FunNode funNode) throws E {
         throw new UnimplementedException();
     }
 
-    public S visitNode(ParNode n) throws E {
+    public S visitNode(final ParNode parNode) throws E {
         throw new UnimplementedException();
     }
 
-    public S visitNode(VarNode n) throws E {
+    public S visitNode(final VarNode varNode) throws E {
         throw new UnimplementedException();
     }
 
-    public S visitNode(PrintNode n) throws E {
+    public S visitNode(final PrintNode printNode) throws E {
         throw new UnimplementedException();
     }
 
-    public S visitNode(IfNode n) throws E {
+    public S visitNode(final IfNode ifNode) throws E {
         throw new UnimplementedException();
     }
 
-    public S visitNode(EqualNode n) throws E {
+    public S visitNode(final EqualNode equalNode) throws E {
         throw new UnimplementedException();
     }
 
-    public S visitNode(TimesNode n) throws E {
+    public S visitNode(final TimesNode timesNode) throws E {
         throw new UnimplementedException();
     }
 
-    public S visitNode(PlusNode n) throws E {
+    public S visitNode(final PlusNode plusNode) throws E {
         throw new UnimplementedException();
     }
 
-    public S visitNode(CallNode n) throws E {
+    public S visitNode(final CallNode callNode) throws E {
         throw new UnimplementedException();
     }
 
-    public S visitNode(IdNode n) throws E {
+    public S visitNode(final IdNode idNode) throws E {
         throw new UnimplementedException();
     }
 
-    public S visitNode(BoolNode n) throws E {
+    public S visitNode(final BoolNode boolNode) throws E {
         throw new UnimplementedException();
     }
 
-    public S visitNode(IntNode n) throws E {
+    public S visitNode(final IntNode intNode) throws E {
         throw new UnimplementedException();
     }
 
-    public S visitNode(ArrowTypeNode n) throws E {
+    public S visitNode(final ArrowTypeNode arrowTypeNode) throws E {
         throw new UnimplementedException();
     }
 
-    public S visitNode(BoolTypeNode n) throws E {
+    public S visitNode(final BoolTypeNode boolTypeNode) throws E {
         throw new UnimplementedException();
     }
 
-    public S visitNode(IntTypeNode n) throws E {
+    public S visitNode(final IntTypeNode intTypeNode) throws E {
         throw new UnimplementedException();
     }
 

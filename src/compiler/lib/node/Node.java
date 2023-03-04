@@ -14,11 +14,11 @@ public abstract class Node implements Visitable {
         return line;
     }
 
-    public void setLine(int l) {
+    public void setLine(final int l) {
         line = l;
     }
 
-    abstract public <S, E extends Exception> S accept(BaseASTVisitor<S, E> visitor) throws E;
+    abstract public <S, E extends Exception> S accept(final BaseASTVisitor<S, E> visitor) throws E;
 
 }
 

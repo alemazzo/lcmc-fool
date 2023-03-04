@@ -15,7 +15,7 @@ public class FunNode extends DecNode {
     public final Node exp;
     public final TypeNode retType;
 
-    public FunNode(String i, TypeNode rt, List<ParNode> pl, List<DecNode> dl, Node e) {
+    public FunNode(final String i, final TypeNode rt, final List<ParNode> pl, final List<DecNode> dl, final Node e) {
         id = i;
         retType = rt;
         parlist = Collections.unmodifiableList(pl);
@@ -26,7 +26,7 @@ public class FunNode extends DecNode {
     //void setType(TypeNode t) {type = t;}
 
     @Override
-    public <S, E extends Exception> S accept(BaseASTVisitor<S, E> visitor) throws E {
+    public <S, E extends Exception> S accept(final BaseASTVisitor<S, E> visitor) throws E {
         return visitor.visitNode(this);
     }
 }

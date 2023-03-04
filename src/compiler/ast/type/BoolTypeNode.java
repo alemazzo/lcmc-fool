@@ -6,7 +6,7 @@ import compiler.lib.node.TypeNode;
 public class BoolTypeNode extends TypeNode {
 
     @Override
-    public <S, E extends Exception> S accept(BaseASTVisitor<S, E> visitor) throws E {
+    public <S, E extends Exception> S accept(final BaseASTVisitor<S, E> visitor) throws E {
         return visitor.visitNode(this);
     }
 }
