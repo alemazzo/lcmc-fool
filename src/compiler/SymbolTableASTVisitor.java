@@ -1,5 +1,6 @@
 package compiler;
 
+import compiler.ast.BaseASTVisitor;
 import compiler.ast.language.*;
 import compiler.ast.operator.EqualNode;
 import compiler.ast.operator.PlusNode;
@@ -8,11 +9,10 @@ import compiler.ast.type.ArrowTypeNode;
 import compiler.ast.value.BoolNode;
 import compiler.ast.value.IntNode;
 import compiler.ast.value.VarNode;
-import compiler.lib.BaseASTVisitor;
+import compiler.east.STEntry;
 import compiler.lib.exc.VoidException;
 import compiler.lib.node.Node;
 import compiler.lib.node.TypeNode;
-import compiler.lib.stentry.STEntry;
 
 import java.util.ArrayList;
 import java.util.HashMap;

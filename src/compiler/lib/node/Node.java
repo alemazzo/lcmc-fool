@@ -1,6 +1,6 @@
 package compiler.lib.node;
 
-import compiler.lib.BaseASTVisitor;
+import compiler.ast.BaseASTVisitor;
 import compiler.lib.visit.Visitable;
 
 /**

@@ -1,6 +1,6 @@
 package compiler.ast.language;
 
-import compiler.lib.BaseASTVisitor;
+import compiler.ast.BaseASTVisitor;
 import compiler.lib.node.Node;
 
 public class PrintNode extends Node {

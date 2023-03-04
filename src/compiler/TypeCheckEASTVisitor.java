@@ -10,12 +10,12 @@ import compiler.ast.type.IntTypeNode;
 import compiler.ast.value.BoolNode;
 import compiler.ast.value.IntNode;
 import compiler.ast.value.VarNode;
-import compiler.lib.BaseEASTVisitor;
+import compiler.east.BaseEASTVisitor;
+import compiler.east.STEntry;
 import compiler.lib.exc.IncompleteException;
 import compiler.lib.exc.TypeException;
 import compiler.lib.node.Node;
 import compiler.lib.node.TypeNode;
-import compiler.lib.stentry.STEntry;
 
 import static compiler.lib.type.TypeRelations.isSubtype;
 
@@ -189,8 +189,8 @@ public class TypeCheckEASTVisitor extends BaseEASTVisitor<TypeNode, TypeExceptio
 // STentry (ritorna campo type)
 
     @Override
-    public TypeNode visitSTentry(STEntry entry) throws TypeException {
-        if (print) printSTentry("type");
+    public TypeNode visitSTEntry(STEntry entry) throws TypeException {
+        if (print) printSTEntry("type");
         return ckvisit(entry.type);
     }
 

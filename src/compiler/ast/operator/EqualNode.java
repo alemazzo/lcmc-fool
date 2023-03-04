@@ -1,6 +1,6 @@
 package compiler.ast.operator;
 
-import compiler.lib.BaseASTVisitor;
+import compiler.ast.BaseASTVisitor;
 import compiler.lib.node.Node;
 
 public class EqualNode extends Node {

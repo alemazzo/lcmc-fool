@@ -10,10 +10,10 @@ import compiler.ast.type.IntTypeNode;
 import compiler.ast.value.BoolNode;
 import compiler.ast.value.IntNode;
 import compiler.ast.value.VarNode;
-import compiler.lib.BaseEASTVisitor;
+import compiler.east.BaseEASTVisitor;
+import compiler.east.STEntry;
 import compiler.lib.exc.VoidException;
 import compiler.lib.node.Node;
-import compiler.lib.stentry.STEntry;
 
 public class PrintEASTVisitor extends BaseEASTVisitor<Void, VoidException> {
 
@@ -149,11 +149,11 @@ public class PrintEASTVisitor extends BaseEASTVisitor<Void, VoidException> {
     }
 
     @Override
-    public Void visitSTentry(STEntry entry) {
-        printSTentry("nestlev " + entry.nl);
-        printSTentry("type");
+    public Void visitSTEntry(STEntry entry) {
+        printSTEntry("nestlev " + entry.nl);
+        printSTEntry("type");
         visit(entry.type);
-        printSTentry("offset " + entry.offset);
+        printSTEntry("offset " + entry.offset);
         return null;
     }
 

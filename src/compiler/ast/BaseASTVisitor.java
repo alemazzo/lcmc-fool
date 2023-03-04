@@ -1,4 +1,4 @@
-package compiler.lib;
+package compiler.ast;
 
 import compiler.ast.language.*;
 import compiler.ast.operator.EqualNode;
@@ -60,8 +60,7 @@ public class BaseASTVisitor<S, E extends Exception> implements Visitor<S, E> {
             indent = (indent == null) ? "" : indent + "  ";
             indent += mark; //inserts mark
             try {
-                S result = visitByAcc(v);
-                return result;
+                return visitByAcc(v);
             } finally {
                 indent = temp;
             }

@@ -14,13 +14,13 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class BasicLexerParserTest {
 
-    private final String fileName = "examples/prova.fool";
     private FOOLLexer lexer;
     private FOOLParser parser;
 
 
     @BeforeEach
     void setUp() throws Exception {
+        String fileName = "examples/prova.fool";
         final CharStream chars = CharStreams.fromFileName(fileName);
         lexer = new FOOLLexer(chars);
         final CommonTokenStream tokens = new CommonTokenStream(lexer);

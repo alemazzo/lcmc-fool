@@ -1,6 +1,6 @@
 package compiler.ast.language;
 
-import compiler.lib.BaseASTVisitor;
+import compiler.ast.BaseASTVisitor;
 import compiler.lib.node.DecNode;
 import compiler.lib.node.Node;
 import compiler.lib.node.TypeNode;

@@ -1,8 +1,8 @@
 package compiler.ast.language;
 
-import compiler.lib.BaseASTVisitor;
+import compiler.ast.BaseASTVisitor;
+import compiler.east.STEntry;
 import compiler.lib.node.Node;
-import compiler.lib.stentry.STEntry;
 
 public class IdNode extends Node {
     public final String id;

@@ -1,6 +1,6 @@
 package compiler.ast.type;
 
-import compiler.lib.BaseASTVisitor;
+import compiler.ast.BaseASTVisitor;
 import compiler.lib.node.TypeNode;
 
 public class IntTypeNode extends TypeNode {

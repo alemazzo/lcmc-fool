@@ -1,6 +1,6 @@
 package compiler.lib.visit;
 
-import compiler.lib.BaseASTVisitor;
+import compiler.ast.BaseASTVisitor;
 
 /**
  * Interface for AST nodes that can be visited by a visitor.

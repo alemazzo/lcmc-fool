@@ -1,6 +1,6 @@
 package compiler.ast.value;
 
-import compiler.lib.BaseASTVisitor;
+import compiler.ast.BaseASTVisitor;
 import compiler.lib.node.Node;
 
 public class BoolNode extends Node {

@@ -1,7 +1,7 @@
-package compiler.lib;
+package compiler.east;
 
+import compiler.ast.BaseASTVisitor;
 import compiler.lib.exc.UnimplementedException;
-import compiler.lib.stentry.STEntry;
 
 public class BaseEASTVisitor<S, E extends Exception> extends BaseASTVisitor<S, E> {
 
@@ -16,11 +16,12 @@ public class BaseEASTVisitor<S, E extends Exception> extends BaseASTVisitor<S, E
         super(ie, p);
     }
 
-    protected void printSTentry(String s) {
-        System.out.println(indent + "STentry: " + s);
+    protected void printSTEntry(String s) {
+        System.out.println(indent + "STEntry: " + s);
     }
 
-    public S visitSTentry(STEntry s) throws E {
+    public S visitSTEntry(final STEntry s) throws E {
         throw new UnimplementedException();
     }
+    
 }
