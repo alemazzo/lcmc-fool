@@ -1,4 +1,4 @@
-package compiler.exc;
+package compiler.lib.exc;
 
 import java.io.Serial;
 
@@ -9,5 +9,5 @@ public class UnimplementedException extends RuntimeException {
 
     @Serial
     private static final long serialVersionUID = 1L;
-	
+
 }

@@ -1,9 +1,9 @@
 package compiler;
 
 import compiler.lib.BaseASTVisitor;
-import compiler.lib.TypeNode;
 import compiler.lib.node.DecNode;
 import compiler.lib.node.Node;
+import compiler.lib.node.TypeNode;
 
 import java.util.Collections;
 import java.util.List;
@@ -169,7 +169,7 @@ public class AST {
     public static class CallNode extends Node {
         final String id;
         final List<Node> arglist;
-        STentry entry;
+        SymbolTableEntry entry;
         int nl;
 
         CallNode(String i, List<Node> p) {
@@ -185,7 +185,7 @@ public class AST {
 
     public static class IdNode extends Node {
         final String id;
-        STentry entry;
+        SymbolTableEntry entry;
         int nl;
 
         IdNode(String i) {

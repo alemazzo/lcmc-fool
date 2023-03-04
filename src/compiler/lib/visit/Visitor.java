@@ -12,12 +12,14 @@ public interface Visitor<S, E extends Exception> {
      * @return the result of the visit
      * @throws E - if the visitor throws an exception
      */
-    S visit(Visitable v) throws E;
+    default S visit(Visitable v) throws E {
+        return visit(v, "");
+    }
 
     /**
      * Visit a visitable node with a mark.
      *
-     * @param v - the visitable to visit
+     * @param v    - the visitable to visit
      * @param mark - a string to mark the visit
      * @return the result of the visit
      * @throws E - if the visitor throws an exception

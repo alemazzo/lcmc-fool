@@ -2,9 +2,9 @@ package compiler;
 
 import compiler.AST.*;
 import compiler.FOOLParser.*;
-import compiler.lib.TypeNode;
 import compiler.lib.node.DecNode;
 import compiler.lib.node.Node;
+import compiler.lib.node.TypeNode;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ParseTree;
 

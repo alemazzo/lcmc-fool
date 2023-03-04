@@ -1,4 +1,4 @@
-package compiler.exc;
+package compiler.lib.exc;
 
 import java.io.Serial;
 
