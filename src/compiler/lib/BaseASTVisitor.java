@@ -1,6 +1,6 @@
 package compiler.lib;
 
-import compiler.ast.*;
+import compiler.ast.language.*;
 import compiler.ast.operator.EqualNode;
 import compiler.ast.operator.PlusNode;
 import compiler.ast.operator.TimesNode;
