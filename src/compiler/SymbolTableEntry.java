@@ -3,9 +3,8 @@ package compiler;
 import compiler.lib.BaseASTVisitor;
 import compiler.lib.BaseEASTVisitor;
 import compiler.lib.node.TypeNode;
-import compiler.lib.visit.Visitable;
 
-public class SymbolTableEntry implements Visitable {
+public class SymbolTableEntry {
     final int nl;
     final TypeNode type;
     final int offset;
@@ -15,8 +14,7 @@ public class SymbolTableEntry implements Visitable {
         type = t;
         offset = o;
     }
-
-    @Override
+    
     public <S, E extends Exception> S accept(BaseASTVisitor<S, E> visitor) throws E {
         return ((BaseEASTVisitor<S, E>) visitor).visitSTentry(this);
     }
