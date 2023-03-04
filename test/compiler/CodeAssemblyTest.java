@@ -12,6 +12,8 @@ import svm.SVMParser;
 
 import java.io.IOException;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class CodeAssemblyTest {
     private String code;
 
@@ -44,8 +46,15 @@ public class CodeAssemblyTest {
 
 
     @Test
-    void testAssembly() {
+    void testAssemblyShouldHaveZeroLexicalErrors() {
         svmParser.assembly();
+        assertEquals(0, svmParser.getNumberOfSyntaxErrors());
+    }
+
+    @Test
+    void testAssemblyShouldHaveZeroSyntacticErrors() {
+        svmParser.assembly();
+        assertEquals(0, svmParser.getNumberOfSyntaxErrors());
     }
 
 }
