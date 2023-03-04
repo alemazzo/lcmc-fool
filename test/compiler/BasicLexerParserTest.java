@@ -6,12 +6,15 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public class BasicLexerParserTest {
 
-    private final String fileName = "test/prova.fool";
+    private final String fileName = "examples/prova.fool";
     private FOOLLexer lexer;
     private FOOLParser parser;
 
@@ -22,6 +25,12 @@ public class BasicLexerParserTest {
         lexer = new FOOLLexer(chars);
         final CommonTokenStream tokens = new CommonTokenStream(lexer);
         parser = new FOOLParser(tokens);
+    }
+
+    @Test
+    void testWrongFileName() {
+        final String wrongFileName = "examples/wrong.fool";
+        assertThrows(IOException.class, () -> CharStreams.fromFileName(wrongFileName));
     }
 
 
