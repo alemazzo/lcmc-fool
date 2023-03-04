@@ -22,7 +22,7 @@ import java.util.Map;
 public class SymbolTableASTVisitor extends BaseASTVisitor<Void, VoidException> {
 
     private final List<Map<String, STEntry>> symTable = new ArrayList<>();
-    int stErrors = 0;
+    int symbolTableErrors = 0;
     private int nestingLevel = 0; // current nesting level
     private int decOffset = -2; // counter for offset of local declarations at current nesting level
 
@@ -69,7 +69,7 @@ public class SymbolTableASTVisitor extends BaseASTVisitor<Void, VoidException> {
         //inserimento di ID nella symtable
         if (hm.put(n.id, entry) != null) {
             System.out.println("Fun id " + n.id + " at line " + n.getLine() + " already declared");
-            stErrors++;
+            symbolTableErrors++;
         }
         //creare una nuova hashmap per la symTable
         nestingLevel++;
@@ -82,7 +82,7 @@ public class SymbolTableASTVisitor extends BaseASTVisitor<Void, VoidException> {
         for (ParNode par : n.parlist)
             if (hmn.put(par.id, new STEntry(nestingLevel, par.getType(), parOffset++)) != null) {
                 System.out.println("Par id " + par.id + " at line " + n.getLine() + " already declared");
-                stErrors++;
+                symbolTableErrors++;
             }
         for (Node dec : n.declist) visit(dec);
         visit(n.exp);
@@ -101,7 +101,7 @@ public class SymbolTableASTVisitor extends BaseASTVisitor<Void, VoidException> {
         //inserimento di ID nella symtable
         if (hm.put(n.id, entry) != null) {
             System.out.println("Var id " + n.id + " at line " + n.getLine() + " already declared");
-            stErrors++;
+            symbolTableErrors++;
         }
         return null;
     }
@@ -152,7 +152,7 @@ public class SymbolTableASTVisitor extends BaseASTVisitor<Void, VoidException> {
         STEntry entry = stLookup(n.id);
         if (entry == null) {
             System.out.println("Fun id " + n.id + " at line " + n.getLine() + " not declared");
-            stErrors++;
+            symbolTableErrors++;
         } else {
             n.entry = entry;
             n.nl = nestingLevel;
@@ -167,7 +167,7 @@ public class SymbolTableASTVisitor extends BaseASTVisitor<Void, VoidException> {
         STEntry entry = stLookup(n.id);
         if (entry == null) {
             System.out.println("Var or Par id " + n.id + " at line " + n.getLine() + " not declared");
-            stErrors++;
+            symbolTableErrors++;
         } else {
             n.entry = entry;
             n.nl = nestingLevel;

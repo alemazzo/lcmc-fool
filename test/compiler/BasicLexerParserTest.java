@@ -46,4 +46,5 @@ public class BasicLexerParserTest {
         assertEquals(0, parser.getNumberOfSyntaxErrors());
     }
 
+
 }

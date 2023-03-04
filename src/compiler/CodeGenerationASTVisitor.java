@@ -11,7 +11,7 @@ import compiler.ast.value.VarNode;
 import compiler.lib.exc.VoidException;
 import compiler.lib.node.Node;
 
-import static compiler.lib.FOOLlib.*;
+import static compiler.lib.FOOL.*;
 
 public class CodeGenerationASTVisitor extends BaseASTVisitor<String, VoidException> {
 

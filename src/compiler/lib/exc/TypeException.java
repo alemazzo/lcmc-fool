@@ -1,6 +1,6 @@
 package compiler.lib.exc;
 
-import compiler.lib.FOOLlib;
+import compiler.lib.FOOL;
 
 import java.io.Serial;
 
@@ -15,7 +15,7 @@ public class TypeException extends Exception {
     public String text;
 
     public TypeException(String t, int line) {
-        FOOLlib.typeErrors++;
+        FOOL.typeErrors++;
         text = t + " at line " + line;
     }
 

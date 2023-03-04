@@ -16,7 +16,7 @@ import compiler.lib.node.Node;
 import compiler.lib.visit.Visitable;
 import compiler.lib.visit.Visitor;
 
-import static compiler.lib.FOOLlib.extractNodeName;
+import static compiler.lib.FOOL.extractNodeName;
 
 public class BaseASTVisitor<S, E extends Exception> implements Visitor<S, E> {
 

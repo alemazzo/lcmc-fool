@@ -19,8 +19,8 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import java.util.ArrayList;
 import java.util.List;
 
-import static compiler.lib.FOOLlib.extractCtxName;
-import static compiler.lib.FOOLlib.lowerizeFirstChar;
+import static compiler.lib.FOOL.extractCtxName;
+import static compiler.lib.FOOL.lowerizeFirstChar;
 
 public class ASTGenerationSTVisitor extends FOOLBaseVisitor<Node> {
 

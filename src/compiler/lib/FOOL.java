@@ -1,6 +1,6 @@
 package compiler.lib;
 
-public class FOOLlib {
+public class FOOL {
 
     public static int typeErrors = 0;
     private static int labCount = 0;
